@@ -1,2 +1,3 @@
 # FreeRTOS-ESP-IDF-Basics
-Basic C file with printf and scanf implementation
+scanf - Basic C file with printf and scanf implementation
+console - Console initiation example in ESP32
