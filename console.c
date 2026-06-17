@@ -9,11 +9,28 @@
 
 #define PROMPT_STR CONFIG_IDF_TARGET
 
+static int helloWorld(){
+	ESP_LOGI("custom_cmd", "HELLO WORLD");
+	return 0;
+}
+
+static void esp_console_register_custom_command()
+{
+	esp_console_cmd_t command = {
+		.command = "custom_cmd",
+		.help = "this is a custom cmd help area",
+		.func = &helloWorld
+	};
+	esp_console_cmd_register(&command);
+}
+
+
 void app_main(void)
 {
     nvs_flash_init();
     esp_console_register_help_command();
-
+    esp_console_register_custom_command();
+    
     // REPL (Read-Evaluate-Print-Loop) environment
     esp_console_repl_t *repl = NULL;
     esp_console_repl_config_t repl_config = ESP_CONSOLE_REPL_CONFIG_DEFAULT();
